@@ -27,7 +27,7 @@ export const updateUserInfo=(req,res)=>{
 
     const user=users.find((user)=>user.id===id)
     if(user){
-        user.firstName=firstName
+        user.firstName?firstName:user.firstName
         user.lastName=lastName
         user.age=age
         user.id=uuid()
