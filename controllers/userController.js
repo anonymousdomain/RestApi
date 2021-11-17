@@ -22,7 +22,16 @@ export const createUser = (req, res) => {
 }
 
 export const updateUserInfo=(req,res)=>{
-    
+    const {id}=req.params
+    const {firstName,lastName,age,id}=req.body
+
+    const user=users.find((user)=>user.id===id)
+    if(user){
+        user.firstName=firstName
+        user.lastName=lastName
+        user.age=age
+        user.id=uuid()
+    }
 }
 export const patchUserInfo=(req,res)=>{
     const {id}=req.params;
