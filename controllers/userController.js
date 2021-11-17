@@ -23,7 +23,7 @@ export const createUser = (req, res) => {
 
 export const updateUserInfo=(req,res)=>{
     const {id}=req.params
-    const {firstName,lastName,age,id}=req.body
+    const {firstName,lastName,age}=req.body
 
     const user=users.find((user)=>user.id===id)
     if(user){
@@ -31,6 +31,10 @@ export const updateUserInfo=(req,res)=>{
         user.lastName=lastName
         user.age=age
         user.id=uuid()
+
+        res.json(user)
+    }else {
+        res.json({msg:`user with id:${id} doesn't exist`})
     }
 }
 export const patchUserInfo=(req,res)=>{
@@ -46,6 +50,7 @@ export const patchUserInfo=(req,res)=>{
     if(age){
         user.age=age
     }
+    res.json(user)
 }
 export const deleteUser=(req,res)=>{
 
