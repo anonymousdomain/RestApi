@@ -20,3 +20,28 @@ export const createUser = (req, res) => {
     users.push({ id: uuid(), ...user })
     res.json(`users with name ${user.firstName} add to a list`)
 }
+
+export const updateUserInfo=(req,res)=>{
+    
+}
+export const patchUserInfo=(req,res)=>{
+    const {id}=req.params;
+    const {firstName,lastName,age}=req.body
+    const user=users.find((user)=>user.id===id)
+    if(firstName){
+        user.firstName=firstName
+    }
+    if(lastName){
+        user.lastName=lastName
+    }
+    if(age){
+        user.age=age
+    }
+}
+export const deleteUser=(req,res)=>{
+
+    const {id}=req.params
+
+    const user=users.filter((user)=>user.id!==id)
+    res.json(user)
+}
